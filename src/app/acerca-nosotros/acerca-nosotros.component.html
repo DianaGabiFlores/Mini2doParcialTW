@@ -1,0 +1,129 @@
+<main class="firtPart">
+
+  <div class="titulo"> 
+    <h1>Conoce al Equipo</h1>
+  </div>
+
+
+  <div class="container">
+    <iframe
+      width="560"
+      height="315"
+      [src]="video | domseguro : 'https://www.youtube.com/embed/'"
+      frameborder="0"
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-inpicture"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+</main>
+
+  <section class="our-work">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-one-quarter">
+          <div class="card cuadro">
+            <div class="card-content has-text-centered">
+              <p class="title is-4">100 000</p>
+              <p class="subtitle is-6">
+                Localidades con anuncios activos en KING AGS
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="card cuadro">
+            <div class="card-content has-text-centered">
+              <p class="title is-4">Más de 1.5 millones</p>
+              <p class="subtitle is-6">De llegadas en total</p>
+            </div>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="card cuadro">
+            <div class="card-content has-text-centered">
+              <p class="title is-4">Más de 2 millones</p>
+              <p class="subtitle is-6">De anfitriones</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<main class="info">
+  <section class="about-us">
+    <p>
+      En 1984, nació el concepto de "KING AGS" cuando unos amigos decidieron
+      abrir las puertas de su modesta casa en Aguascalientes para recibir a tres
+      viajeros sedientos de aventura. Desde entonces, más de 10,000 anfitriones
+      en Aguascalientes han compartido sus hogares con más de 3 millones de
+      personas. En KING AGS, nos enorgullece brindar a nuestros huéspedes
+      experiencias únicas y auténticas. Desde acogedoras cabañas hasta lujosas
+      casas, ofrecemos una amplia gama de opciones para satisfacer todas las
+      necesidades y presupuestos. Además, organizamos eventos locales y
+      experiencias culturales para sumergir a nuestros huéspedes en la vida de
+      Aguascalientes. Creemos en la sostenibilidad y la responsabilidad social,
+      trabajando en estrecha colaboración con nuestras comunidades locales. Con
+      un equipo dedicado, estamos comprometidos a hacer que tu experiencia en
+      KING AGS sea inolvidable. Ven y únete a nuestra comunidad de viajeros
+      apasionados y descubre todo lo que Aguascalientes tiene para ofrecer.
+    </p>
+  </section>
+
+  <section class="api">
+    <p-table [value]="array" [tableStyle]="{'min-width': '60rem'}">
+      <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+              Estados más turísticos de México
+          </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Estado</th>
+              <th>Imagen</th>
+              <th>Turistas</th>
+              <th>Lugares</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-api>
+    <!-- @for (lugar of api; track lugar) { -->
+      <tr>
+        <td>{{api.estado}}</td>
+        <td class="imgApi">
+          <p-image 
+            [src]="'assets/Estados/' + api.imagen"
+            [alt]="api.estado"
+            width="200"
+            class="shadow-4 color"
+            [preview]="true" />
+          <!-- <img [src]="'assets/Estados/' + api.imagen" [alt]="api.estado" width="100" class="shadow-4" /> -->
+        </td>
+        <td>{{api.turistas}} visitantes</td>
+        <td> <ul>
+        @for (i of api.lugares; track i) {
+          <li>{{i}}</li>
+        }
+      </ul></td>
+      </tr>
+    <!-- } -->
+    </ng-template>
+  </p-table>
+  </section>
+  <section class="comentarios">
+    <app-comentarios (emitir)="EscogerComentarios($event)"></app-comentarios>
+    <div class="columns">
+      @for (item of comment; track item) {
+        <div class="column is-one-third cardComment">
+          <div class="imgUsuario">
+            <img src="assets/user.png" alt="usuario" class="imgUser">
+          </div>
+          <div class="infoUsuario">
+            <p>Anónimo</p>
+            <p>{{item}}</p>
+          </div>
+        </div>
+      }
+  </div>
+  </section>
+</main>
